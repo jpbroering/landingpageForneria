@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forneria Donno | Pizza Artesanal em Forno a Lenha</title>
+  
+  <!-- Fonts: Playfair Display & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            terracota: '#C8402A',
+            oliva: '#3F6B3A',
+            creme: '#F6E9D2',
+            dourado: '#D9953B',
+            marrom: '#2B2420',
+          },
+          fontFamily: {
+            serif: ['Playfair Display', 'Georgia', 'serif'],
+            sans: ['Inter', 'sans-serif'],
+          },
+          boxShadow: {
+            'artesanal': '0 10px 30px -5px rgba(43, 36, 32, 0.12)',
+            'warm': '0 15px 35px -5px rgba(200, 64, 42, 0.25)',
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style>
+    body {
+      background-color: #F6E9D2;
+      color: #2B2420;
+      font-family: 'Inter', sans-serif;
+    }
+    h1, h2, h3, h4, .font-playfair {
+      font-family: 'Playfair Display', serif;
+    }
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #F6E9D2;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #D9953B;
+      border-radius: 5px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #C8402A;
+    }
+    
+    .placeholder-pattern {
+      background-color: #f1e2c7;
+      background-image:  radial-gradient(#d9953b 0.75px, transparent 0.75px), radial-gradient(#d9953b 0.75px, #f1e2c7 0.75px);
+      background-size: 30px 30px;
+      background-position: 0 0,15px 15px;
+    }
+  </style>
+</head>
+<body class="antialiased text-marrom selection:bg-terracota selection:text-creme">
+
+  <!-- Top Announcement Bar -->
+  <div class="bg-marrom text-creme text-xs md:text-sm py-2 px-4 text-center font-medium border-b border-dourado/30">
+    <div class="max-w-7xl mx-auto flex items-center justify-center gap-2">
+      <span class="inline-block w-2 h-2 rounded-full bg-terracota animate-pulse"></span>
+      <span>🔥 Forno a lenha aquecido! Pizzas individuais com massa de fermentação natural de 48h.</span>
+      <span class="hidden md:inline text-dourado">• Entrega rápida & retirada no local</span>
+    </div>
+  </div>
+
+  <!-- Header Navigation -->
+  <header class="sticky top-0 z-50 bg-creme/95 backdrop-blur-md border-b border-marrom/10 transition-all duration-300" id="main-header">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center gap-3 group">
+        <!-- SVG Logo vector from Forneria Donno brand guide -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" class="w-12 h-12 md:w-14 md:h-14 transform group-hover:rotate-6 transition-transform duration-300">
+          <circle cx="100" cy="100" r="96" fill="#2B2420" stroke="#D9953B" stroke-width="3"/>
+          <circle cx="100" cy="100" r="82" fill="#D9953B"/>
+          <circle cx="100" cy="100" r="68" fill="#C8402A"/>
+          <circle cx="85" cy="70" r="11" fill="#F6E9D2"/>
+          <circle cx="122" cy="80" r="14" fill="#F6E9D2"/>
+          <circle cx="68" cy="108" r="12" fill="#F6E9D2"/>
+          <circle cx="100" cy="108" r="9" fill="#F6E9D2"/>
+          <circle cx="128" cy="128" r="12" fill="#F6E9D2"/>
+          <circle cx="78" cy="138" r="11" fill="#F6E9D2"/>
+          <ellipse cx="94" cy="90" rx="14" ry="6" transform="rotate(-25 94 90)" fill="#3F6B3A"/>
+          <ellipse cx="130" cy="98" rx="14" ry="6" transform="rotate(30 130 98)" fill="#3F6B3A"/>
+          <ellipse cx="112" cy="112" rx="15" ry="6" transform="rotate(-40 112 112)" fill="#3F6B3A"/>
+          <ellipse cx="98" cy="130" rx="13" ry="6" transform="rotate(65 98 130)" fill="#3F6B3A"/>
+        </svg>
+        <div class="flex flex-col">
+          <span class="font-playfair text-xl md:text-2xl font-bold tracking-tight text-marrom leading-none">Forneria Donno</span>
+          <span class="text-[10px] md:text-xs tracking-widest text-oliva uppercase font-semibold mt-1">Pizza Artesanal & Forno a Lenha</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Menu -->
+      <nav class="hidden lg:flex items-center space-x-8 font-medium text-sm">
+        <a href="#hero" class="text-marrom hover:text-terracota transition-colors">Início</a>
+        <a href="#sobre" class="text-marrom hover:text-terracota transition-colors">Conceito</a>
+        <a href="#diferenciais" class="text-marrom hover:text-terracota transition-colors">Diferenciais</a>
+        <a href="#cardapio" class="text-marrom hover:text-terracota transition-colors">Cardápio</a>
+        <a href="#depoimentos" class="text-marrom hover:text-terracota transition-colors">Depoimentos</a>
+        <a href="#contato" class="text-marrom hover:text-terracota transition-colors">Contato</a>
+      </nav>
+
+      <!-- Action Button -->
+      <div class="hidden sm:flex items-center gap-4">
+        <a href="#cardapio" class="bg-terracota hover:bg-[#a83320] text-creme px-5 py-2.5 rounded-full text-sm font-semibold transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5 flex items-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+          Pedir Agora
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button id="mobile-menu-btn" aria-label="Abrir menu de navegação" class="lg:hidden p-2 rounded-lg text-marrom hover:bg-dourado/20 focus:outline-none">
+        <svg id="menu-icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="menu-icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <!-- Mobile Drawer Nav -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-creme border-b border-marrom/10 px-6 pt-4 pb-6 space-y-4">
+      <a href="#hero" class="block py-2 text-base font-medium text-marrom hover:text-terracota">Início</a>
+      <a href="#sobre" class="block py-2 text-base font-medium text-marrom hover:text-terracota">Conceito</a>
+      <a href="#diferenciais" class="block py-2 text-base font-medium text-marrom hover:text-terracota">Diferenciais</a>
+      <a href="#cardapio" class="block py-2 text-base font-medium text-marrom hover:text-terracota">Cardápio</a>
+      <a href="#depoimentos" class="block py-2 text-base font-medium text-marrom hover:text-terracota">Depoimentos</a>
+      <a href="#contato" class="block py-2 text-base font-medium text-marrom hover:text-terracota">Contato</a>
+      <a href="#cardapio" class="w-full text-center block bg-terracota text-creme py-3 rounded-full font-semibold shadow-md">Fazer Pedido</a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="hero" class="relative pt-8 pb-16 md:pt-16 md:pb-24 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Hero Text Content -->
+        <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+          <div class="inline-flex items-center gap-2 bg-oliva/10 text-oliva px-4 py-1.5 rounded-full text-xs md:text-sm font-semibold border border-oliva/20">
+            <span class="w-2 h-2 rounded-full bg-oliva"></span>
+            A Verdadeira Pizza Artesanal Caseira
+          </div>
+
+          <h1 class="font-playfair text-4xl sm:text-5xl lg:text-6xl font-extrabold text-marrom leading-tight">
+            Massa fermentada,<br class="hidden sm:inline">
+            forno a lenha e <span class="text-terracota italic">sabor inesquecível.</span>
+          </h1>
+
+          <p class="text-base sm:text-lg text-marrom/80 max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
+            Na <strong>Forneria Donno</strong>, priorizamos porções individuais preparadas artesanalmente com maturação lenta de 48h. Menos tempo de espera, mais variedade e preços acessíveis para uma experiência calorosa em família.
+          </p>
+
+          <!-- Badges -->
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2 max-w-lg mx-auto lg:mx-0">
+            <div class="p-3 rounded-xl bg-white/60 border border-dourado/30 flex items-center gap-2">
+              <span class="text-xl">🌿</span>
+              <span class="text-xs font-semibold text-marrom">Massa 48h Fermentação</span>
+            </div>
+            <div class="p-3 rounded-xl bg-white/60 border border-dourado/30 flex items-center gap-2">
+              <span class="text-xl">🔥</span>
+              <span class="text-xs font-semibold text-marrom">Forno a Lenha de Pedra</span>
+            </div>
+            <div class="p-3 rounded-xl bg-white/60 border border-dourado/30 flex items-center gap-2 col-span-2 sm:col-span-1">
+              <span class="text-xl">⚡</span>
+              <span class="text-xs font-semibold text-marrom">Preparo Rápido e Ágil</span>
+            </div>
+          </div>
+
+          <!-- CTA Buttons -->
+          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+            <a href="#cardapio" class="w-full sm:w-auto bg-terracota hover:bg-[#a83320] text-creme text-center px-8 py-4 rounded-full font-bold text-base shadow-warm hover:shadow-xl transition-all transform hover:-translate-y-1">
+              Explorar Cardápio
+            </a>
+            <a href="#sobre" class="w-full sm:w-auto bg-transparent border-2 border-marrom text-marrom hover:bg-marrom hover:text-creme text-center px-8 py-3.5 rounded-full font-semibold text-base transition-all">
+              Conhecer a Forneria
+            </a>
+          </div>
+        </div>
+
+        <!-- Hero Placeholder Box -->
+        <div class="lg:col-span-5">
+          <div class="relative mx-auto max-w-md lg:max-w-none">
+            <!-- Decorative outline background -->
+            <div class="absolute -inset-2 rounded-3xl bg-gradient-to-tr from-terracota via-dourado to-oliva opacity-30 blur-lg"></div>
+            
+            <div class="relative placeholder-pattern border-2 border-dashed border-dourado rounded-3xl p-8 aspect-[4/3] flex flex-col items-center justify-center text-center shadow-artesanal group hover:border-terracota transition-colors">
+              <div class="w-16 h-16 rounded-full bg-terracota/10 flex items-center justify-center mb-4 text-terracota">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+              </div>
+              <p class="text-marrom font-bold text-base md:text-lg max-w-xs">
+                A colocar imagem (resolução da imagem indicada)
+              </p>
+              <span class="text-xs text-marrom/70 mt-2 font-mono bg-white/80 px-3 py-1 rounded-full border border-dourado/40">
+                Resolução Recomendada: 1200x900 px
+              </span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- About Us Section -->
+  <section id="sobre" class="py-16 md:py-24 bg-white/50 border-y border-marrom/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- About Image Placeholder -->
+        <div class="lg:col-span-5 order-2 lg:order-1">
+          <div class="placeholder-pattern border-2 border-dashed border-dourado rounded-2xl p-6 aspect-[4/3] flex flex-col items-center justify-center text-center shadow-md">
+            <div class="w-14 h-14 rounded-full bg-oliva/10 flex items-center justify-center mb-3 text-oliva">
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+            </div>
+            <p class="text-marrom font-bold text-sm md:text-base">
+              A colocar imagem (resolução da imagem indicada)
+            </p>
+            <span class="text-xs text-marrom/70 mt-2 font-mono bg-creme px-3 py-1 rounded-full border border-dourado/40">
+              Resolução Recomendada: 900x675 px
+            </span>
+          </div>
+        </div>
+
+        <!-- About Text Content -->
+        <div class="lg:col-span-7 order-1 lg:order-2 space-y-6">
+          <div class="inline-block text-terracota font-semibold text-sm uppercase tracking-wider">Nossa Essência Artesanal</div>
+          <h2 class="font-playfair text-3xl sm:text-4xl font-bold text-marrom">
+            Uma experiência caseira de pizza, pensada para aproximar pessoas.
+          </h2>
+          <p class="text-marrom/80 text-base md:text-lg leading-relaxed">
+            A <strong>Forneria Donno</strong> nasceu do desejo de resgatar o sabor autêntico da pizza feita sem pressa, mas servida com agilidade. Nossa massa passa por um delicado processo de fermentação natural de 48 horas, o que garante uma digestão leve, bordas aeradas e um aroma irresistível de lenha de verdade.
+          </p>
+          <p class="text-marrom/80 text-base leading-relaxed">
+            Acreditamos que comer bem não precisa ser complicado. Por isso, focamos em **tamanhos menores e individuais**: assim, cada integrante da família escolhe seu sabor preferido sem precisar entrar em acordo, reduzimos radicalmente o tempo de forno e conseguimos praticar preços acessíveis e justos.
+          </p>
+          
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+            <div class="border-l-4 border-terracota pl-4 py-1">
+              <h4 class="font-bold text-marrom text-base">Ambiente Familiar</h4>
+              <p class="text-xs text-marrom/70">Aconchegante, natural e acolhedor para reunir quem você ama.</p>
+            </div>
+            <div class="border-l-4 border-oliva pl-4 py-1">
+              <h4 class="font-bold text-marrom text-base">Ingredientes Selecionados</h4>
+              <p class="text-xs text-marrom/70">Produtos frescos e artesanais rigorosamente escolhidos.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Differentials Section -->
+  <section id="diferenciais" class="py-16 md:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+        <span class="text-oliva font-semibold text-sm uppercase tracking-widest">Por que escolher a Donno?</span>
+        <h2 class="font-playfair text-3xl sm:text-4xl font-bold text-marrom">O Segredo do Nosso Sucesso</h2>
+        <p class="text-marrom/75 text-base">Combinamos a tradição italiana com a praticidade moderna de porções individuais.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        
+        <!-- Card 1 -->
+        <div class="bg-creme p-6 rounded-2xl border border-dourado/40 shadow-artesanal hover:-translate-y-1 transition-all duration-300">
+          <div class="w-12 h-12 rounded-xl bg-terracota text-creme flex items-center justify-center font-bold text-xl mb-5 shadow-sm">
+            01
+          </div>
+          <h3 class="font-playfair text-xl font-bold text-marrom mb-2">Massa 48 Horas</h3>
+          <p class="text-sm text-marrom/80 leading-relaxed">
+            Massa madurada lentamente. Leveza que não pesa no estômago, com bordas crocantes por fora e macias por dentro.
+          </p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="bg-creme p-6 rounded-2xl border border-dourado/40 shadow-artesanal hover:-translate-y-1 transition-all duration-300">
+          <div class="w-12 h-12 rounded-xl bg-oliva text-creme flex items-center justify-center font-bold text-xl mb-5 shadow-sm">
+            02
+          </div>
+          <h3 class="font-playfair text-xl font-bold text-marrom mb-2">Forno a Lenha</h3>
+          <p class="text-sm text-marrom/80 leading-relaxed">
+            Assadas em altas temperaturas no forno de pedra a lenha, selando o sabor do molho de tomate rústico e do queijo derretido.
+          </p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="bg-creme p-6 rounded-2xl border border-dourado/40 shadow-artesanal hover:-translate-y-1 transition-all duration-300">
+          <div class="w-12 h-12 rounded-xl bg-dourado text-marrom flex items-center justify-center font-bold text-xl mb-5 shadow-sm">
+            03
+          </div>
+          <h3 class="font-playfair text-xl font-bold text-marrom mb-2">Tamanhos Menores</h3>
+          <p class="text-sm text-marrom/80 leading-relaxed">
+            Proporções individuais ideais que permitem provar variados sabores do cardápio em uma única refeição familiar.
+          </p>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="bg-creme p-6 rounded-2xl border border-dourado/40 shadow-artesanal hover:-translate-y-1 transition-all duration-300">
+          <div class="w-12 h-12 rounded-xl bg-marrom text-creme flex items-center justify-center font-bold text-xl mb-5 shadow-sm">
+            04
+          </div>
+          <h3 class="font-playfair text-xl font-bold text-marrom mb-2">Agilidade & Preço Justo</h3>
+          <p class="text-sm text-marrom/80 leading-relaxed">
+            O tamanho individual assa mais rápido, diminuindo substancialmente seu tempo de espera com valores super acessíveis.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Menu Section -->
+  <section id="cardapio" class="py-16 md:py-24 bg-white/60 border-t border-marrom/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-12 space-y-3">
+        <span class="text-terracota font-semibold text-sm uppercase tracking-widest">Cardápio Selecionado</span>
+        <h2 class="font-playfair text-3xl sm:text-5xl font-bold text-marrom">Nossas Pizzas Principais</h2>
+        <p class="text-marrom/75 text-base">
+          Todas as nossas pizzas têm tamanho individual artesanal (aprox. 25cm), perfeitas para matar sua fome ou compartilhar várias opções!
+        </p>
+      </div>
+
+      <!-- Filter Tabs -->
+      <div class="flex justify-center mb-12">
+        <div class="inline-flex p-1.5 rounded-full bg-creme border border-dourado/40 gap-1 sm:gap-2 text-xs sm:text-sm font-semibold">
+          <button onclick="filterMenu('todas')" id="tab-todas" class="menu-tab active bg-terracota text-creme px-5 py-2.5 rounded-full transition-all shadow-sm">
+            Todas
+          </button>
+          <button onclick="filterMenu('salgadas')" id="tab-salgadas" class="menu-tab text-marrom hover:text-terracota px-5 py-2.5 rounded-full transition-all">
+            Pizzas Salgadas
+          </button>
+          <button onclick="filterMenu('doces')" id="tab-doces" class="menu-tab text-marrom hover:text-terracota px-5 py-2.5 rounded-full transition-all">
+            Pizzas Doces
+          </button>
+        </div>
+      </div>
+
+      <!-- Menu Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="menu-grid">
+        
+        <!-- Pizza 1: Marguerita -->
+        <div class="menu-card salgadas bg-creme rounded-2xl overflow-hidden border border-dourado/40 shadow-artesanal flex flex-col justify-between hover:shadow-xl transition-all">
+          <div>
+            <div class="placeholder-pattern border-b border-dourado/30 h-48 p-4 flex flex-col items-center justify-center text-center">
+              <span class="text-xs font-bold text-marrom/80">A colocar imagem (resolução da imagem indicada)</span>
+              <span class="text-[10px] text-marrom/60 mt-1 font-mono">600x400 px</span>
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="font-playfair text-xl font-bold text-marrom">Marguerita</h3>
+                <span class="text-terracota font-extrabold text-lg">R$ 34,90</span>
+              </div>
+              <p class="text-xs text-marrom/75 leading-relaxed mb-4">
+                Molho de tomate pelati rústico, muçarela especial fior di latte, rodelas de tomate, folhas de manjericão fresco e azeite extra virgem.
+              </p>
+            </div>
+          </div>
+          <div class="px-6 pb-6 pt-0">
+            <button onclick="openOrderModal('Marguerita', '34,90')" class="w-full bg-marrom hover:bg-terracota text-creme py-2.5 rounded-xl text-sm font-semibold transition-colors flex items-center justify-center gap-2">
+              <span>Selecionar</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Pizza 2: Frango com Catupiry -->
+        <div class="menu-card salgadas bg-creme rounded-2xl overflow-hidden border border-dourado/40 shadow-artesanal flex flex-col justify-between hover:shadow-xl transition-all">
+          <div>
+            <div class="placeholder-pattern border-b border-dourado/30 h-48 p-4 flex flex-col items-center justify-center text-center">
+              <span class="text-xs font-bold text-marrom/80">A colocar imagem (resolução da imagem indicada)</span>
+              <span class="text-[10px] text-marrom/60 mt-1 font-mono">600x400 px</span>
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="font-playfair text-xl font-bold text-marrom">Frango com Catupiry</h3>
+                <span class="text-terracota font-extrabold text-lg">R$ 38,90</span>
+              </div>
+              <p class="text-xs text-marrom/75 leading-relaxed mb-4">
+                Peito de frango tenro desfiado e suavemente temperado, coberto com uma generosa camada de requeijão Catupiry legítimo e orégano.
+              </p>
+            </div>
+          </div>
+          <div class="px-6 pb-6 pt-0">
+            <button onclick="openOrderModal('Frango com Catupiry', '38,90')" class="w-full bg-marrom hover:bg-terracota text-creme py-2.5 rounded-xl text-sm font-semibold transition-colors flex items-center justify-center gap-2">
+              <span>Selecionar</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Pizza 3: Peru com Catupiry -->
+        <div class="menu-card salgadas bg-creme rounded-2xl overflow-hidden border border-dourado/40 shadow-artesanal flex flex-col justify-between hover:shadow-xl transition-all">
+          <div>
+            <div class="placeholder-pattern border-b border-dourado/30 h-48 p-4 flex flex-col items-center justify-center text-center">
+              <span class="text-xs font-bold text-marrom/80">A colocar imagem (resolução da imagem indicada)</span>
+              <span class="text-[10px] text-marrom/60 mt-1 font-mono">600x400 px</span>
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="font-playfair text-xl font-bold text-marrom">Peru com Catupiry</h3>
+                <span class="text-terracota font-extrabold text-lg">R$ 39,90</span>
+              </div>
+              <p class="text-xs text-marrom/75 leading-relaxed mb-4">
+                Fatias finas de peito de peru defumado premium, combinação suave com requeijão Catupiry e leve toque de azeitonas fatiadas.
+              </p>
+            </div>
+          </div>
+          <div class="px-6 pb-6 pt-0">
+            <button onclick="openOrderModal('Peru com Catupiry', '39,90')" class="w-full bg-marrom hover:bg-terracota text-creme py-2.5 rounded-xl text-sm font-semibold transition-colors flex items-center justify-center gap-2">
+              <span>Selecionar</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Pizza 4: Presunto Parma -->
+        <div class="menu-card salgadas bg-creme rounded-2xl overflow-hidden border border-dourado/40 shadow-artesanal flex flex-col justify-between hover:shadow-xl transition-all">
+          <div>
+            <div class="placeholder-pattern border-b border-dourado/30 h-48 p-4 flex flex-col items-center justify-center text-center">
+              <span class="text-xs font-bold text-marrom/80">A colocar imagem (resolução da imagem indicada)</span>
+              <span class="text-[10px] text-marrom/60 mt-1 font-mono">600x400 px</span>
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="font-playfair text-xl font-bold text-marrom">Presunto Parma</h3>
+                <span class="text-terracota font-extrabold text-lg">R$ 46,90</span>
+              </div>
+              <p class="text-xs text-marrom/75 leading-relaxed mb-4">
+                Lâminas de presunto cru tipo Parma maturado, folhas frescas de rúcula, lascas de queijo parmesão e fina redução de balsâmico.
+              </p>
+            </div>
+          </div>
+          <div class="px-6 pb-6 pt-0">
+            <button onclick="openOrderModal('Presunto Parma', '46,90')" class="w-full bg-marrom hover:bg-terracota text-creme py-2.5 rounded-xl text-sm font-semibold transition-colors flex items-center justify-center gap-2">
+              <span>Selecionar</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Pizza 5: Quatro Queijos -->
+        <div class="menu-card salgadas bg-creme rounded-2xl overflow-hidden border border-dourado/40 shadow-artesanal flex flex-col justify-between hover:shadow-xl transition-all">
+          <div>
+            <div class="placeholder-pattern border-b border-dourado/30 h-48 p-4 flex flex-col items-center justify-center text-center">
+              <span class="text-xs font-bold text-marrom/80">A colocar imagem (resolução da imagem indicada)</span>
+              <span class="text-[10px] text-marrom/60 mt-1 font-mono">600x400 px</span>
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="font-playfair text-xl font-bold text-marrom">Quatro Queijos</h3>
+                <span class="text-terracota font-extrabold text-lg">R$ 42,90</span>
+              </div>
+              <p class="text-xs text-marrom/75 leading-relaxed mb-4">
+                Harmonia perfeita entre muçarela cremosa, gorgonzola de sabor marcante, provolone defumado e Catupiry cremoso.
+              </p>
+            </div>
+          </div>
+          <div class="px-6 pb-6 pt-0">
+            <button onclick="openOrderModal('Quatro Queijos', '42,90')" class="w-full bg-marrom hover:bg-terracota text-creme py-2.5 rounded-xl text-sm font-semibold transition-colors flex items-center justify-center gap-2">
+              <span>Selecionar</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Pizza 6: Portuguesa -->
+        <div class="menu-card salgadas bg-creme rounded-2xl overflow-hidden border border-dourado/40 shadow-artesanal flex flex-col justify-between hover:shadow-xl transition-all">
+          <div>
+            <div class="placeholder-pattern border-b border-dourado/30 h-48 p-4 flex flex-col items-center justify-center text-center">
+              <span class="text-xs font-bold text-marrom/80">A colocar imagem (resolução da imagem indicada)</span>
+              <span class="text-[10px] text-marrom/60 mt-1 font-mono">600x400 px</span>
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="font-playfair text-xl font-bold text-marrom">Portuguesa</h3>
+                <span class="text-terracota font-extrabold text-lg">R$ 39,90</span>
+              </div>
+              <p class="text-xs text-marrom/75 leading-relaxed mb-4">
+                Presunto cozido fatiado, ovos cozidos, muçarela, cebola fatiada, ervilhas selecionadas e azeitonas pretas chilenas.
+              </p>
+            </div>
+          </div>
+          <div class="px-6 pb-6 pt-0">
+            <button onclick="openOrderModal('Portuguesa', '39,90')" class="w-full bg-marrom hover:bg-terracota text-creme py-2.5 rounded-xl text-sm font-semibold transition-colors flex items-center justify-center gap-2">
+              <span>Selecionar</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Pizza 7: Calabresa -->
+        <div class="menu-card salgadas bg-creme rounded-2xl overflow-hidden border border-dourado/40 shadow-artesanal flex flex-col justify-between hover:shadow-xl transition-all">
+          <div>
+            <div class="placeholder-pattern border-b border-dourado/30 h-48 p-4 flex flex-col items-center justify-center text-center">
+              <span class="text-xs font-bold text-marrom/80">A colocar imagem (resolução da imagem indicada)</span>
+              <span class="text-[10px] text-marrom/60 mt-1 font-mono">600x400 px</span>
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="font-playfair text-xl font-bold text-marrom">Calabresa</h3>
+                <span class="text-terracota font-extrabold text-lg">R$ 36,90</span>
+              </div>
+              <p class="text-xs text-marrom/75 leading-relaxed mb-4">
+                Calabresa artesanal fatiada bem fininha, cebola roxa marinada, orégano desidratado e molho de tomate rústico da casa.
+              </p>
+            </div>
+          </div>
+          <div class="px-6 pb-6 pt-0">
+            <button onclick="openOrderModal('Calabresa', '36,90')" class="w-full bg-marrom hover:bg-terracota text-creme py-2.5 rounded-xl text-sm font-semibold transition-colors flex items-center justify-center gap-2">
+              <span>Selecionar</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Pizza 8: Chocolate Branco -->
+        <div class="menu-card doces bg-creme rounded-2xl overflow-hidden border border-dourado/40 shadow-artesanal flex flex-col justify-between hover:shadow-xl transition-all">
+          <div>
+            <div class="placeholder-pattern border-b border-dourado/30 h-48 p-4 flex flex-col items-center justify-center text-center">
+              <span class="text-xs font-bold text-marrom/80">A colocar imagem (resolução da imagem indicada)</span>
+              <span class="text-[10px] text-marrom/60 mt-1 font-mono">600x400 px</span>
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-2">
+                <div class="flex items-center gap-2">
+                  <h3 class="font-playfair text-xl font-bold text-marrom">Chocolate Branco</h3>
+                  <span class="bg-dourado/20 text-marrom text-[10px] font-bold px-2 py-0.5 rounded">Doce</span>
+                </div>
+                <span class="text-terracota font-extrabold text-lg">R$ 32,90</span>
+              </div>
+              <p class="text-xs text-marrom/75 leading-relaxed mb-4">
+                Massa leve recheada com verdadeiro chocolate branco nobre derretido no forno a lenha e finalizado com amêndoas laminadas.
+              </p>
+            </div>
+          </div>
+          <div class="px-6 pb-6 pt-0">
+            <button onclick="openOrderModal('Chocolate Branco', '32,90')" class="w-full bg-marrom hover:bg-terracota text-creme py-2.5 rounded-xl text-sm font-semibold transition-colors flex items-center justify-center gap-2">
+              <span>Selecionar</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Pizza 9: Chocolate Preto -->
+        <div class="menu-card doces bg-creme rounded-2xl overflow-hidden border border-dourado/40 shadow-artesanal flex flex-col justify-between hover:shadow-xl transition-all">
+          <div>
+            <div class="placeholder-pattern border-b border-dourado/30 h-48 p-4 flex flex-col items-center justify-center text-center">
+              <span class="text-xs font-bold text-marrom/80">A colocar imagem (resolução da imagem indicada)</span>
+              <span class="text-[10px] text-marrom/60 mt-1 font-mono">600x400 px</span>
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-2">
+                <div class="flex items-center gap-2">
+                  <h3 class="font-playfair text-xl font-bold text-marrom">Chocolate Preto</h3>
+                  <span class="bg-dourado/20 text-marrom text-[10px] font-bold px-2 py-0.5 rounded">Doce</span>
+                </div>
+                <span class="text-terracota font-extrabold text-lg">R$ 32,90</span>
+              </div>
+              <p class="text-xs text-marrom/75 leading-relaxed mb-4">
+                Creme de chocolate meio amargo puro e cremoso, preparado ao forno a lenha, coberto com pedaços de morango fresco picado.
+              </p>
+            </div>
+          </div>
+          <div class="px-6 pb-6 pt-0">
+            <button onclick="openOrderModal('Chocolate Preto', '32,90')" class="w-full bg-marrom hover:bg-terracota text-creme py-2.5 rounded-xl text-sm font-semibold transition-colors flex items-center justify-center gap-2">
+              <span>Selecionar</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="depoimentos" class="py-16 md:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+        <span class="text-oliva font-semibold text-sm uppercase tracking-widest">Opinião de Quem Ama</span>
+        <h2 class="font-playfair text-3xl sm:text-4xl font-bold text-marrom">O que nossos clientes dizem</h2>
+        <p class="text-marrom/75 text-base">A satisfação de saborear uma pizza leve, crocante e cheia de afeto.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Testimonial 1 -->
+        <div class="bg-creme p-6 rounded-2xl border border-dourado/40 shadow-artesanal flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="flex text-dourado">★★★★★</div>
+            <p class="text-sm text-marrom/80 italic leading-relaxed">
+              "A ideia dos tamanhos individuais é genial! Na minha família cada um pede o sabor que mais gosta. A pizza de Presunto Parma é simplesmente divina!"
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-dourado/30 flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-terracota/20 font-bold text-terracota flex items-center justify-center text-sm">
+              MC
+            </div>
+            <div>
+              <h4 class="font-bold text-sm text-marrom">Mariana Cavalcanti</h4>
+              <span class="text-xs text-marrom/60">Cliente frequente</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="bg-creme p-6 rounded-2xl border border-dourado/40 shadow-artesanal flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="flex text-dourado">★★★★★</div>
+            <p class="text-sm text-marrom/80 italic leading-relaxed">
+              "Você nota a diferença da fermentação natural no primeiro pedaço. A massa é extremamente leve, e a velocidade do forno a lenha impressiona!"
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-dourado/30 flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-oliva/20 font-bold text-oliva flex items-center justify-center text-sm">
+              RS
+            </div>
+            <div>
+              <h4 class="font-bold text-sm text-marrom">Ricardo Santos</h4>
+              <span class="text-xs text-marrom/60">Apreciador de Gastronomia</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="bg-creme p-6 rounded-2xl border border-dourado/40 shadow-artesanal flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="flex text-dourado">★★★★★</div>
+            <p class="text-sm text-marrom/80 italic leading-relaxed">
+              "Ambiente acolhedor e familiar. A pizza doce de Chocolate Preto com morango finalizou o nosso jantar com chave de ouro. Recomendo muito!"
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-dourado/30 flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-dourado/30 font-bold text-marrom flex items-center justify-center text-sm">
+              LA
+            </div>
+            <div>
+              <h4 class="font-bold text-sm text-marrom">Luiza Almeida</h4>
+              <span class="text-xs text-marrom/60">Visita em Família</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Contact & Hours Section -->
+  <section id="contato" class="py-16 md:py-24 bg-marrom text-creme relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        
+        <!-- Info Left -->
+        <div class="lg:col-span-6 space-y-8">
+          <div class="space-y-3">
+            <span class="text-dourado font-semibold text-sm uppercase tracking-widest">Venha Conhecer</span>
+            <h2 class="font-playfair text-3xl sm:text-5xl font-bold text-creme">Localização & Contato</h2>
+            <p class="text-creme/80 text-base leading-relaxed">
+              Esperamos por você em nosso ambiente aconchegante! Faça sua visita ou peça a sua pizza favorita diretamente pelo nosso canal exclusivo de WhatsApp.
+            </p>
+          </div>
+
+          <div class="space-y-6">
+            <!-- Item Address -->
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-xl bg-terracota/20 border border-terracota/40 text-terracota flex items-center justify-center shrink-0">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              </div>
+              <div>
+                <h4 class="font-playfair font-bold text-lg text-dourado">Endereço</h4>
+                <p class="text-sm text-creme/90 leading-relaxed">
+                  Rua das Laranjeiras, 450 - Bairro Jardim das Oliveiras<br>
+                  São Paulo - SP | CEP 04500-000
+                </p>
+              </div>
+            </div>
+
+            <!-- Item Phone & Whatsapp -->
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-xl bg-oliva/20 border border-oliva/40 text-oliva flex items-center justify-center shrink-0">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+              </div>
+              <div>
+                <h4 class="font-playfair font-bold text-lg text-dourado">Telefone & WhatsApp</h4>
+                <p class="text-sm text-creme/90">Atendimento telefônico: (11) 3456-7890</p>
+                <p class="text-sm text-creme/90">Pedidos via WhatsApp: (11) 98765-4321</p>
+              </div>
+            </div>
+
+            <!-- Item Hours -->
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-xl bg-dourado/20 border border-dourado/40 text-dourado flex items-center justify-center shrink-0">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </div>
+              <div>
+                <h4 class="font-playfair font-bold text-lg text-dourado">Horário de Funcionamento</h4>
+                <p class="text-sm text-creme/90">Terça a Domingo: 18h00 às 23h30</p>
+                <p class="text-xs text-creme/60 mt-1">Fechado às Segundas-feiras para manutenção do forno.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form Right -->
+        <div class="lg:col-span-6 bg-creme text-marrom p-8 rounded-3xl shadow-xl border border-dourado/40">
+          <h3 class="font-playfair text-2xl font-bold mb-2">Envie uma Mensagem</h3>
+          <p class="text-xs text-marrom/70 mb-6">Dúvidas, reservas ou eventos familiares? Fale conosco.</p>
+
+          <form onsubmit="handleFormSubmit(event)" class="space-y-4">
+            <div>
+              <label class="block text-xs font-semibold uppercase mb-1">Nome Completo</label>
+              <input type="text" required placeholder="Seu nome" class="w-full px-4 py-3 rounded-xl bg-white border border-dourado/40 focus:outline-none focus:ring-2 focus:ring-terracota text-sm">
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-semibold uppercase mb-1">Telefone</label>
+                <input type="tel" required placeholder="(11) 99999-9999" class="w-full px-4 py-3 rounded-xl bg-white border border-dourado/40 focus:outline-none focus:ring-2 focus:ring-terracota text-sm">
+              </div>
+              <div>
+                <label class="block text-xs font-semibold uppercase mb-1">Assunto</label>
+                <select class="w-full px-4 py-3 rounded-xl bg-white border border-dourado/40 focus:outline-none focus:ring-2 focus:ring-terracota text-sm">
+                  <option>Dúvida sobre Cardápio</option>
+                  <option>Reserva de Mesa</option>
+
+                  <option>Elogios / Sugestões</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold uppercase mb-1">Mensagem</label>
+              <textarea rows="4" required placeholder="Como podemos ajudar você?" class="w-full px-4 py-3 rounded-xl bg-white border border-dourado/40 focus:outline-none focus:ring-2 focus:ring-terracota text-sm"></textarea>
+            </div>
+
+            <button type="submit" class="w-full bg-terracota hover:bg-[#a83320] text-creme py-3.5 rounded-xl font-bold text-sm transition-all shadow-md">
+              Enviar Mensagem
+            </button>
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Order Modal -->
+  <div id="order-modal" class="fixed inset-0 z-50 hidden bg-marrom/70 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-creme w-full max-w-md rounded-3xl p-6 shadow-2xl border border-dourado/50 relative animate-fade-in">
+      
+      <button onclick="closeOrderModal()" class="absolute top-4 right-4 p-2 text-marrom/60 hover:text-marrom rounded-full">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+
+      <div class="text-center mb-6">
+        <span class="text-xs font-bold uppercase tracking-widest text-oliva">Pedir via WhatsApp</span>
+        <h3 class="font-playfair text-2xl font-bold text-marrom mt-1" id="modal-pizza-name">Nome da Pizza</h3>
+        <p class="text-terracota font-extrabold text-xl mt-1">R$ <span id="modal-pizza-price">0,00</span></p>
+      </div>
+
+      <div class="space-y-4 mb-6">
+        <div>
+          <label class="block text-xs font-bold text-marrom uppercase mb-1">Quantidade</label>
+          <div class="flex items-center gap-3">
+            <button onclick="adjustQty(-1)" class="w-10 h-10 rounded-xl bg-dourado/20 text-marrom font-bold text-lg hover:bg-dourado/40">-</button>
+            <span id="modal-qty" class="font-bold text-lg text-marrom w-8 text-center">1</span>
+            <button onclick="adjustQty(1)" class="w-10 h-10 rounded-xl bg-dourado/20 text-marrom font-bold text-lg hover:bg-dourado/40">+</button>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-marrom uppercase mb-1">Observações / Preferências</label>
+          <input id="modal-obs" type="text" placeholder="Ex: Sem orégano, bem assada..." class="w-full px-4 py-2.5 rounded-xl bg-white border border-dourado/40 text-sm focus:outline-none focus:ring-2 focus:ring-terracota">
+        </div>
+      </div>
+
+      <button onclick="sendWhatsappOrder()" class="w-full bg-oliva hover:bg-[#2e522a] text-creme py-3.5 rounded-xl font-bold text-base transition-all flex items-center justify-center gap-2 shadow-md">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+        Enviar Pedido por WhatsApp
+      </button>
+
+    </div>
+  </div>
+
+  <!-- Notification Toast -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 hidden bg-marrom text-creme px-6 py-4 rounded-2xl shadow-2xl border border-dourado/50 text-sm font-semibold flex items-center gap-3">
+    <span class="text-xl">✅</span>
+    <span id="toast-message">Mensagem enviada com sucesso!</span>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-[#1f1916] text-creme/70 py-12 border-t border-dourado/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-creme/10">
+        
+        <div class="flex items-center gap-3">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" class="w-10 h-10">
+            <circle cx="100" cy="100" r="96" fill="#2B2420" stroke="#D9953B" stroke-width="3"/>
+            <circle cx="100" cy="100" r="82" fill="#D9953B"/>
+            <circle cx="100" cy="100" r="68" fill="#C8402A"/>
+            <circle cx="85" cy="70" r="11" fill="#F6E9D2"/>
+            <circle cx="122" cy="80" r="14" fill="#F6E9D2"/>
+            <ellipse cx="94" cy="90" rx="14" ry="6" transform="rotate(-25 94 90)" fill="#3F6B3A"/>
+          </svg>
+          <span class="font-playfair text-xl font-bold text-creme">Forneria Donno</span>
+        </div>
+
+        <nav class="flex flex-wrap justify-center gap-6 text-xs sm:text-sm">
+          <a href="#hero" class="hover:text-dourado transition-colors">Início</a>
+          <a href="#sobre" class="hover:text-dourado transition-colors">Conceito</a>
+          <a href="#diferenciais" class="hover:text-dourado transition-colors">Diferenciais</a>
+          <a href="#cardapio" class="hover:text-dourado transition-colors">Cardápio</a>
+          <a href="#contato" class="hover:text-dourado transition-colors">Contato</a>
+        </nav>
+
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-center sm:text-left">
+        <p>© 2026 Forneria Donno. Todos os direitos reservados. Pizza artesanal em forno a lenha.</p>
+        <p class="text-creme/50">Endereço Fictício • Criado exclusivamente para demonstração de identidade visual.</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Interactive JavaScript Scripts -->
+  <script>
+    // Mobile Navigation Toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIconOpen = document.getElementById('menu-icon-open');
+    const menuIconClose = document.getElementById('menu-icon-close');
+
+    mobileMenuBtn.addEventListener('click', () => {
+      const isHidden = mobileMenu.classList.contains('hidden');
+      if (isHidden) {
+        mobileMenu.classList.remove('hidden');
+        menuIconOpen.classList.add('hidden');
+        menuIconClose.classList.remove('hidden');
+      } else {
+        mobileMenu.classList.add('hidden');
+        menuIconOpen.classList.remove('hidden');
+        menuIconClose.classList.add('hidden');
+      }
+    });
+
+    // Close mobile menu on link click
+    document.querySelectorAll('#mobile-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        menuIconOpen.classList.remove('hidden');
+        menuIconClose.classList.add('hidden');
+      });
+    });
+
+    // Menu Filtering Logic
+    function filterMenu(category) {
+      const cards = document.querySelectorAll('.menu-card');
+      const tabs = document.querySelectorAll('.menu-tab');
+
+      tabs.forEach(tab => {
+        tab.classList.remove('bg-terracota', 'text-creme', 'shadow-sm');
+        tab.classList.add('text-marrom');
+      });
+
+      const activeTab = document.getElementById(`tab-${category}`);
+      activeTab.classList.add('bg-terracota', 'text-creme', 'shadow-sm');
+      activeTab.classList.remove('text-marrom');
+
+      cards.forEach(card => {
+        if (category === 'todas') {
+          card.style.display = 'flex';
+        } else {
+          if (card.classList.contains(category)) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        }
+      });
+    }
+
+    // Modal Ordering Logic
+    let currentPizzaName = '';
+    let currentPizzaPrice = '';
+    let currentQuantity = 1;
+
+    function openOrderModal(name, price) {
+      currentPizzaName = name;
+      currentPizzaPrice = price;
+      currentQuantity = 1;
+      
+      document.getElementById('modal-pizza-name').innerText = name;
+      document.getElementById('modal-pizza-price').innerText = price;
+      document.getElementById('modal-qty').innerText = currentQuantity;
+      document.getElementById('modal-obs').value = '';
+
+      document.getElementById('order-modal').classList.remove('hidden');
+    }
+
+    function closeOrderModal() {
+      document.getElementById('order-modal').classList.add('hidden');
+    }
+
+    function adjustQty(amount) {
+      currentQuantity = Math.max(1, currentQuantity + amount);
+      document.getElementById('modal-qty').innerText = currentQuantity;
+    }
+
+    function sendWhatsappOrder() {
+      const obs = document.getElementById('modal-obs').value;
+      const text = `Olá, Forneria Donno! Gostaria de pedir:\n- ${currentQuantity}x Pizza ${currentPizzaName} (R$ ${currentPizzaPrice} cada)\n${obs ? `Observação: ${obs}\n` : ''}Aguardamos a confirmação do tempo de entrega!`;
+      
+      const whatsappUrl = `https://wa.me/5511987654321?text=${encodeURIComponent(text)}`;
+      window.open(whatsappUrl, '_blank');
+      closeOrderModal();
+      showToast("Direcionando para o WhatsApp da Forneria!");
+    }
+
+    function handleFormSubmit(event) {
+      event.preventDefault();
+      showToast("Mensagem enviada com sucesso! Entraremos em contato.");
+      event.target.reset();
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toast-message').innerText = message;
+      toast.classList.remove('hidden');
+      setTimeout(() => {
+        toast.classList.add('hidden');
+      }, 4000);
+    }
+  </script>
+
+</body>
+</html>
